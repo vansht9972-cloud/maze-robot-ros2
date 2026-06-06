@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- ================= Gazebo ================= -->
+    <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py">
+        <arg
+        name="world"
+        value="$(find-pkg-share maze_robot_description)/worlds/wall.world"/>
+    </include>
+
+    <!-- ================= Robot Description ================= -->
+    <let
+        name="robot_description_content"
+        value="$(command 'xacro $(find-pkg-share maze_robot_description)/urdf/robot.urdf.xacro')" />
+
+    <!-- ================= Robot State Publisher ================= -->
+    <node
+        pkg="robot_state_publisher"
+        exec="robot_state_publisher"
+        output="screen">
+
+        <param
+            name="robot_description"
+            value="$(var robot_description_content)" />
+    </node>
+
+    <!-- ================= Spawn Robot ================= -->
+    <node
+        pkg="gazebo_ros"
+        exec="spawn_entity.py"
+        output="screen"
+
+        args="
+            -topic robot_description
+            -entity my_robot
+            -x 0.0
+            -y 0.0
+            -z 0.2
+        " />
+
+</launch>

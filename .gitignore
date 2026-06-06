@@ -1,0 +1,17 @@
+# ROS2 generated files
+build/
+install/
+log/
+
+# VS Code
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
