@@ -4,7 +4,7 @@
     <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py">
         <arg
         name="world"
-        value="$(find-pkg-share maze_robot_description)/worlds/wall.world"/>
+        value="$(find-pkg-share maze_robot_description)/worlds/obstacle.world"/>
     </include>
 
     <!-- ================= Robot Description ================= -->
@@ -36,5 +36,4 @@
             -y 0.0
             -z 0.2
         " />
-
 </launch>
